@@ -8,7 +8,7 @@ Ported by raz0red
 Overview
 --------------------------------------------
 
-JSVecX i a JavaScript port of the VecX emulator. The emulator was ported from
+JSVecX is a JavaScript port of the VecX emulator. The emulator was ported from
 the original C version as developed by Valavan Manohararajah to JavaScript
 and the HTML5 canvas element (no flash or other plugins are required). 
 
