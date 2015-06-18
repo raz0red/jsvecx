@@ -10,7 +10,7 @@ Overview
 
 JSVecX i a JavaScript port of the VecX emulator. The emulator was ported from
 the original C version as developed by Valavan Manohararajah to JavaScript
-and the HTML5 canvas element (no flash or other pLugins are required). 
+and the HTML5 canvas element (no flash or other plugins are required). 
 
 The port is pretty CPU intensive, so you will need a modern computer with
 Chrome, Firefox, Opera, or a recent version of Safari. 
