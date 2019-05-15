@@ -4,8 +4,6 @@ JSVecX
 
 Ported by raz0red
 
-![JSVecX](https://raw.githubusercontent.com/raz0red/jsvecx/master/jsvecx.jpg)
-
 --------------------------------------------
 Overview
 --------------------------------------------
@@ -18,6 +16,8 @@ for sound (no flash is required).
 The emulator can be found at the following location: 
 
 [http://www.twitchasylum.com/jsvecx/] 
+
+![JSVecX](https://raw.githubusercontent.com/raz0red/jsvecx/master/jsvecx.jpg)
 
 It is also worth noting that there is nothing illegal about posting the
 commercial Vectrex roms, they were made public domain in the 90's. 
