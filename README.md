@@ -45,7 +45,7 @@ Change Log
  - Initial sound support (still quite buggy)
  - Added "Asteroid Cowboy" homebrew game
  - Added box art for Thrust and Minestorm
- - Removed Chrome frame exception (deprecated long ago)
+ - Removed Chrome frame extension (deprecated long ago)
 
 05/22/10 
 -------------------
