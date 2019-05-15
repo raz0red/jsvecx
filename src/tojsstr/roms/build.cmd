@@ -4,7 +4,9 @@
 ..\Debug\tojsstr.exe Globals.cartdata 3dczycst.bin  >  ..\..\deploy\js\roms\3dczycst.js
 ..\Debug\tojsstr.exe Globals.cartdata agt.bin       >  ..\..\deploy\js\roms\agt.js
 ..\Debug\tojsstr.exe Globals.cartdata armor.bin     >  ..\..\deploy\js\roms\armor.js
+..\Debug\tojsstr.exe Globals.cartdata asteroid_cowboy.bin >  ..\..\deploy\js\roms\asteroid_cowboy.js
 ..\Debug\tojsstr.exe Globals.cartdata berzerk.bin   >  ..\..\deploy\js\roms\berzerk.js
+..\Debug\tojsstr.exe Globals.cartdata BerzerkDebugged.vec >  ..\..\deploy\js\roms\berzerk-debugged.js
 ..\Debug\tojsstr.exe Globals.cartdata bedlam.bin    >  ..\..\deploy\js\roms\bedlam.js
 ..\Debug\tojsstr.exe Globals.cartdata blitz.bin     >  ..\..\deploy\js\roms\blitz.js
 ..\Debug\tojsstr.exe Globals.cartdata castle.bin    >  ..\..\deploy\js\roms\castle.js
@@ -38,6 +40,7 @@
 ..\Debug\tojsstr.exe Globals.cartdata space.bin     >  ..\..\deploy\js\roms\space.js
 ..\Debug\tojsstr.exe Globals.cartdata spinball.bin  >  ..\..\deploy\js\roms\spinball.js
 ..\Debug\tojsstr.exe Globals.cartdata starhawk.bin  >  ..\..\deploy\js\roms\starhawk.js
+..\Debug\tojsstr.exe Globals.cartdata starship.vec >  ..\..\deploy\js\roms\starship.js
 ..\Debug\tojsstr.exe Globals.cartdata startrek.bin  >  ..\..\deploy\js\roms\startrek.js
 ..\Debug\tojsstr.exe Globals.cartdata sweep.bin     >  ..\..\deploy\js\roms\sweep.js
 ..\Debug\tojsstr.exe Globals.cartdata tdf.bin       >  ..\..\deploy\js\roms\tdf.js
@@ -45,6 +48,7 @@
 ..\Debug\tojsstr.exe Globals.cartdata tsu-dl.bin    >  ..\..\deploy\js\roms\tsu.js
 ..\Debug\tojsstr.exe Globals.cartdata vecmania1.bin >  ..\..\deploy\js\roms\vecmania1.js
 ..\Debug\tojsstr.exe Globals.cartdata vecmania2.bin >  ..\..\deploy\js\roms\vecmania2.js
+..\Debug\tojsstr.exe Globals.cartdata Vectrexians-1999-PD.vec >  ..\..\deploy\js\roms\vectrexians.js
 ..\Debug\tojsstr.exe Globals.cartdata vix-dl.bin    >  ..\..\deploy\js\roms\vix.js
 ..\Debug\tojsstr.exe Globals.cartdata webwars.bin   >  ..\..\deploy\js\roms\webwars.js
 ..\Debug\tojsstr.exe Globals.cartdata wotr.bin      >  ..\..\deploy\js\roms\wotr.js

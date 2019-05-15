@@ -1,9 +1,9 @@
 /*
 JSVecX : JavaScript port of the VecX emulator by raz0red.
-         Copyright (C) 2010 raz0red (www.twitchasylum.com)
+         Copyright (C) 2010-2019 raz0red (twitchasylum.com)
 
 The original C version was written by Valavan Manohararajah
-(http://www.valavan.net/vectrex.html).
+(http://valavan.net/vectrex.html).
 
 This software is provided 'as-is', without any express or implied
 warranty.  In no event will the authors be held liable for any
@@ -25,6 +25,14 @@ must not be misrepresented as being the original software.
 distribution.
 */
 
+/*
+  Emulation of the AY-3-8910 / YM2149 sound chip.
+
+  Based on various code snippets by Ville Hallik, Michael Cuddy,
+  Tatsuyuki Satoh, Fabrice Frances, Nicola Salmoria.
+*/
+
+
 function fptr( value )
 {
     this.value = value;
@@ -37,7 +45,7 @@ function Utils()
     {
         if( this.errorCount > 0 )
         {
-            alert(error);
+            console.log(error);
             this.errorCount--;
         }
     }

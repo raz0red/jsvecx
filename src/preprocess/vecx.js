@@ -31,6 +31,7 @@ function VecX()
 
     this.osint = new osint();
     this.e6809 = new e6809();
+    this.e8910 = new e8910();    
 
     /* Memory */
 
@@ -48,6 +49,8 @@ function VecX()
 
     //unsigned snd_regs[16];
     this.snd_regs = new Array(16);
+    this.e8910.init(this.snd_regs);
+    
     //static unsigned snd_select;
     this.snd_select = 0;
 
@@ -197,6 +200,7 @@ function VecX()
                 if( this.snd_select != 14 )
                 {
                     this.snd_regs[this.snd_select] = this.via_ora;
+                    this.e8910.e8910_write(this.snd_select, this.via_ora);
                 }
                 break;
             case 0x18:
@@ -721,11 +725,13 @@ function VecX()
         for( var r = 0; r < 16; r++ )
         {
             this.snd_regs[r] = 0;
+            this.e8910.e8910_write(r, 0);
         }
 
         /* input buttons */
 
         this.snd_regs[14] = 0xff;
+        this.e8910.e8910_write(14, 0xff);
 
         this.snd_select = 0;
 
@@ -1703,6 +1709,7 @@ function VecX()
             }
 
             this.running = false;
+            this.e8910.stop();
         }
     }
 
@@ -1710,6 +1717,7 @@ function VecX()
     {
         if( !this.running )
         {
+            this.e8910.start();
             this.vecx_emuloop();
         }
     }
@@ -1735,6 +1743,11 @@ function VecX()
 
         var vecx = this;
         setTimeout( function() { vecx.start(); }, 200 );
+    }
+    
+    this.toggleSoundEnabled = function() 
+    {
+        return this.e8910.toggleEnabled();
     }
 
     this.leftHeld = false;

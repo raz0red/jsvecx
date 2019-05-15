@@ -2,6 +2,10 @@ mcpp -j -P e6809.js | grep -v "^$" > tmp.js
 cat header.js tmp.js > ..\deploy\js\e6809.js
 del tmp.js
 
+mcpp -j -P -@old e8910.js | grep -v "^$" > tmp.js
+cat header.js tmp.js > ..\deploy\js\e8910.js
+del tmp.js
+
 mcpp -j -P vecx.js | grep -v "^$" > tmp.js
 cat header.js tmp.js > ..\deploy\js\vecx.js
 del tmp.js

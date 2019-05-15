@@ -39,7 +39,7 @@ function Utils()
     {
         if( this.errorCount > 0 )
         {
-            alert(error);
+            console.log(error);
             this.errorCount--;
         }
     }

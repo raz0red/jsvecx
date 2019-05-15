@@ -16,6 +16,7 @@
     -->
     <script src="js/fastromdata.js" type="text/javascript"></script>
     <script src="js/e6809.js" type="text/javascript"></script>
+    <script src="js/e8910.js" type="text/javascript"></script>
     <script src="js/osint.js" type="text/javascript"></script>
     <script src="js/vector_t.js" type="text/javascript"></script>
     <script src="js/vecx.js" type="text/javascript"></script>
@@ -29,15 +30,15 @@
                     [
                         [ "Armor Attack", "armor", "armor", "armor" ],
                         [ "Bedlam", "bedlam", "bedlam", "bedlam" ],
-                        [ "Berzerk", "berzerk", "berzerk", "berzerk" ],
+                        [ "Berzerk", "berzerk-debugged", "berzerk", "berzerk" ],
                         [ "Blitz", "blitz", "blitz", "blitz" ],
                         /* [ "Clean Sweep", "sweep", "sweep", "none" ], */
                         [ "Cosmic Chasm", "chasm", "chasm", "chasm" ],
                         [ "Fortress of Narzod", "narzod", "narzod", "narzod" ],
                         [ "Heads Up", "headsup", "headsup", "headsup" ],
                         /* [ "Hyper Chase", "hyper", "hyper", "none" ], */
-                        [ "Mine Storm", "minestorm", "minestorm", "none" ],
-                        [ "Mine Storm 2", "mstorm2", "minestorm", "none" ],
+                        [ "Mine Storm", "minestorm", "minestorm", "minestorm" ],
+                        [ "Mine Storm 2", "mstorm2", "minestorm", "minestorm" ],
                         [ "Polar Rescue", "polar", "polar", "polar" ],
                         [ "Pole Position", "pole", "pole", "pole" ],
                         [ "Ripoff", "ripoff", "ripoff", "ripoff" ],
@@ -63,6 +64,7 @@
                 [ "Homebrew",
                     [
                         [ "All Good Things", "agt", "none", "none" ],
+                        [ "Asteroid Cowboy", "asteroid_cowboy", "none", "asteroid_cowboy" ],
                         [ "Gravitrex plus", "gravplus", "none", "none" ],
                         /*[ "Moonlander", "moon", "none", "none" ]*/
                         [ "Nebula Commander", "nebula", "none", "none" ],
@@ -73,11 +75,12 @@
                         [ "Space Frenzy", "sfpd", "none", "none" ],
                         [ "Spike Hoppin\'", "spikehop", "none", "none" ],
                         /*[ "Spike\'s Water Balloons", "spikewater", "none", "none" ]*/
-                        [ "Thrust", "thrust", "thrust", "none" ],
+                        [ "Thrust", "thrust", "thrust", "thrust" ],
                         [ "Tsunami", "tsu", "none", "none" ],
                         [ "Vecmania 1", "vecmania1", "none", "none" ],
                         [ "Vecmania 2", "vecmania2", "none", "none" ],
                         [ "Vectrex Frogger", "frogger", "none", "none" ],                        
+                        /*[ "Vectrexians", "vectrexians", "none", "vectrexians" ],*/
                         [ "Vix", "vix", "none", "none" ],
                         [ "War of the Robots", "wotr", "none", "none" ]                                                	
                     ]
@@ -93,6 +96,12 @@
 
         var pauseButtonImage = new Image();
         pauseButtonImage.src = "images/pausebutton.png";
+        
+        var soundButtonImage = new Image();
+        soundButtonImage.src = "images/soundbutton.png";
+
+        var soundOffButtonImage = new Image();
+        soundOffButtonImage.src = "images/soundoffbutton.png";
 
         function overlayFade( isOut )
         {
@@ -122,6 +131,21 @@
                     .attr( "title", "Resume" );
             }
         }
+        
+        function setSoundImage( showSound )
+        {
+            var soundImage = $('#soundImage');
+            if( showSound )
+            {
+                soundImage.attr( "src", soundButtonImage.src )
+                    .attr( "title", "Toggle Sound" );
+            }
+            else
+            {
+                soundImage.attr( "src", soundOffButtonImage.src )
+                    .attr( "title", "Toggle Sound" );
+            }
+        }        
 
         $(document).ready(function()
         {
@@ -288,6 +312,22 @@
                         hidden ? "Overlay enabled." : "Overlay disabled." );
                 }
             );
+            
+            $('#soundButton').click(
+                function()
+                {
+                    if( vecx.toggleSoundEnabled() )
+                    {
+                        $("#status").text( "Sound enabled." );
+                        setSoundImage( true );
+                    }
+                    else
+                    {
+                        $("#status").text( "Sound disabled." );
+                        setSoundImage( false );
+                    }
+                }
+            );
 
             vecx.main();
         });
@@ -313,7 +353,7 @@
                 <a href="http://www.twitchasylum.com/forum/viewtopic.php?p=3112#3112">JSVecX forum thread</a>.
             </p>
             <p>
-                The rendering in this port relies on the HTML5 <a href="http://en.wikipedia.org/wiki/Html5_canvas">Canvas</a> element (no flash is required). The port is pretty CPU intensive, so you will need a modern computer with <a href="http://www.google.com/chrome">Google Chrome</a>, <a href="http://www.mozilla.com/en-US/firefox/">Firefox (4.0)</a>, <a href="http://www.opera.com/">Opera</a>, or a recent version of Safari.
+                This port relies on the HTML5 <a href="http://en.wikipedia.org/wiki/Html5_canvas">Canvas</a> element for display and the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a> for sound (no flash is required).
             </p>
         </div>
         <div id="controls">
@@ -325,6 +365,7 @@
 	    <div id="buttons">
             <a href="javascript:void(0)" title="Pause" id="pauseButton"><img id="pauseImage" src="images/pausebutton.png" width="64" height="54"></a>
             <a href="javascript:void(0)" title="Reset" id="resetButton"><img src="images/resetbutton.png" width="64" height="54"></a>
+            <a href="javascript:void(0)" title="Toggle Sound" id="soundButton"><img id="soundImage" src="images/soundbutton.png" width="64" height="54"></a>                    
             <a href="javascript:void(0)" title="Toggle Overlay" id="overlayButton"><img src="images/overlaybutton.png" width="64" height="54"></a>        
     	</div>
 	    <div id="status">Loading ...</div>
@@ -334,23 +375,5 @@
     </div>
     <div class="clear"></div>
 </div>
-<script type="text/javascript"
-   src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
-  <style>
-   /*
-    CSS rules to use for styling the overlay:
-      .chromeFrameOverlayContent
-      .chromeFrameOverlayContent iframe
-      .chromeFrameOverlayCloseBar
-      .chromeFrameOverlayUnderlay
-   */
-  </style>
-
-  <script>
-   CFInstall.check({
-     mode: "overlay",
-     destination: "http://www.twitchasylum.com/jsvecx"
-   });
-</script>
 </body>
 </html>

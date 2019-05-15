@@ -609,7 +609,7 @@ function e6809()
                 break;
             default:
                 //printf ("undefined post-byte\n");
-                alert("undefined post-byte");
+                console.log("undefined post-byte");
                 break;
         }
 
@@ -3137,7 +3137,7 @@ function e6809()
 
         if( negstr != null )
         {
-            alert( negstr );
+            console.log( negstr );
         }
     }
 #endif    

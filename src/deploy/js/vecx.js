@@ -1,9 +1,9 @@
 /*
 JSVecX : JavaScript port of the VecX emulator by raz0red.
-         Copyright (C) 2010 raz0red (www.twitchasylum.com)
+         Copyright (C) 2010-2019 raz0red (twitchasylum.com)
 
 The original C version was written by Valavan Manohararajah
-(http://www.valavan.net/vectrex.html).
+(http://valavan.net/vectrex.html).
 
 This software is provided 'as-is', without any express or implied
 warranty.  In no event will the authors be held liable for any
@@ -25,10 +25,19 @@ must not be misrepresented as being the original software.
 distribution.
 */
 
+/*
+  Emulation of the AY-3-8910 / YM2149 sound chip.
+
+  Based on various code snippets by Ville Hallik, Michael Cuddy,
+  Tatsuyuki Satoh, Fabrice Frances, Nicola Salmoria.
+*/
+
+
 function VecX()
 {
     this.osint = new osint();
     this.e6809 = new e6809();
+    this.e8910 = new e8910();
     this.rom = new Array(0x2000);
     utils.initArray(this.rom, 0);
     this.cart = new Array(0x8000);
@@ -36,6 +45,7 @@ function VecX()
     this.ram = new Array(0x400);
     utils.initArray(this.ram, 0);
     this.snd_regs = new Array(16);
+    this.e8910.init(this.snd_regs);
     this.snd_select = 0;
     this.via_ora = 0;
     this.via_orb = 0;
@@ -105,6 +115,7 @@ function VecX()
                 if( this.snd_select != 14 )
                 {
                     this.snd_regs[this.snd_select] = this.via_ora;
+                    this.e8910.e8910_write(this.snd_select, this.via_ora);
                 }
                 break;
             case 0x18:
@@ -440,8 +451,10 @@ function VecX()
         for( var r = 0; r < 16; r++ )
         {
             this.snd_regs[r] = 0;
+            this.e8910.e8910_write(r, 0);
         }
         this.snd_regs[14] = 0xff;
+        this.e8910.e8910_write(14, 0xff);
         this.snd_select = 0;
         this.via_ora = 0;
         this.via_orb = 0;
@@ -911,12 +924,14 @@ function VecX()
                 this.fpsTimer = null;
             }
             this.running = false;
+            this.e8910.stop();
         }
     }
     this.start = function()
     {
         if( !this.running )
         {
+            this.e8910.start();
             this.vecx_emuloop();
         }
     }
@@ -935,6 +950,10 @@ function VecX()
         this.osint.osint_clearscreen();
         var vecx = this;
         setTimeout( function() { vecx.start(); }, 200 );
+    }
+    this.toggleSoundEnabled = function()
+    {
+        return this.e8910.toggleEnabled();
     }
     this.leftHeld = false;
     this.rightHeld = false;
