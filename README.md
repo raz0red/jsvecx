@@ -9,32 +9,15 @@ Overview
 --------------------------------------------
 
 JSVecX is a JavaScript port of the VecX emulator. The emulator was ported from
-the original C version as developed by Valavan Manohararajah to JavaScript
-and the HTML5 canvas element (no flash or other plugins are required). 
-
-The port is pretty CPU intensive, so you will need a modern computer with
-Chrome, Firefox, Opera, or a recent version of Safari. 
+the original C version as developed by Valavan Manohararajah to JavaScript/HTML5.
+This port relies on the HTML5 Canvas element for display and the Web Audio API 
+for sound (no flash is required). 
 
 The emulator can be found at the following location: 
 
-[http://www.twitchasylum.com/jsvecx/] 
+http://www.twitchasylum.com/jsvecx/
 
---------------------------------------------
-About
---------------------------------------------
-
-The first question people ask when I describe this port is, "Why?", which is
-actually a pretty good question. For me, porting emulators is really more than
-the final product. It provides a unique ability to examine the hardware of a
-classic system at a level that I would never get when just playing the games.
-For some time I have been interested in the Vectrex system. I always wanted
-one growing up, but it was always well out of my price range. So, I have
-periodically looked to see if there were any emulators that I could port to
-the Wii. I think hands down, the best Vectrex emulator out there is ParaJVE
-but it is currently closed source. VecX, while a good emulator has its quirks,
-so I never really considered porting it to the Wii. However, recently I noted
-the various emulators being ported to JavaScript/HTML5 and VecX seemed like a
-perfect candidate for porting to such a platform. 
+[![JSVecX](https://raw.githubusercontent.com/raz0red/jsvecx/master/jsvecx.jpg)](http://www.twitchasylum.com/jsvecx/)
 
 It is also worth noting that there is nothing illegal about posting the
 commercial Vectrex roms, they were made public domain in the 90's. 
@@ -43,25 +26,26 @@ commercial Vectrex roms, they were made public domain in the 90's.
 Known issues
 --------------------------------------------
 
-  * No Sound
+  * Buggy Sound ~ While the emulator now has sound support, it is a bit 
+    quirky. Several games will experience periodic audio issues (Berzerk, 
+    Star Trek, Armor Attack). Sound can be toggled on and off by clicking 
+    the "speaker" button.
   * Overlays are misaligned ~ (core bug) The vector rendering code of VecX
     doesn't appear to be 100% accurate. As a result, some of the overlays
     are a bit misaligned. In addition, text is also sometimes unreadable.
     I will be looking at the vector rendering code to see if this can be 
     resolved. 
-  * Arrow Keys on Opera ~ The arrow keys don't work with Opera on certain
-    platforms (Mac, Linux, etc.). As such, I added the ability to use a
-    different set of keys (P - L - ; - ' ). I will look into this a bit more
-    and try to figure out why Opera handles the arrow keys differently than
-    other browsers. 
-  * Cartridge selection on Opera ~ Once a game is selected, Opera continues
-    to send keyboard events to the cartridge pull-down. To stop this, you must
-    click somewhere else on the page. Not sure why this is happening, will look
-    into it more. 
 
 --------------------------------------------
 Change Log
 --------------------------------------------
+
+05/14/19
+-------------------
+ - Initial sound support (still quite buggy)
+ - Added "Asteroid Cowboy" homebrew game
+ - Added box art for Thrust and Minestorm
+ - Removed Chrome frame extension (deprecated long ago)
 
 05/22/10 
 -------------------
