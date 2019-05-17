@@ -30,7 +30,6 @@ for %%x in (
 %CAT% %HEADER% tmp.js > %DEPLOY_JS_DIR%\e8910.js || goto :error
 del tmp.js || goto :error
 
-
 %TOJSSTR% Globals.romdata  %ROMS_DIR%\rom.dat       >  %DEPLOY_JS_DIR%\romdata.js || goto :error
 %TOJSSTR% Globals.romdata  %ROMS_DIR%\fastrom.dat   >  %DEPLOY_JS_DIR%\fastromdata.js || goto :error
 
