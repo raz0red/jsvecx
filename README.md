@@ -17,7 +17,7 @@ The emulator can be found at the following location:
 
 http://www.twitchasylum.com/jsvecx/
 
-[![JSVecX](https://raw.githubusercontent.com/raz0red/jsvecx/master/jsvecx.jpg)](http://www.twitchasylum.com/jsvecx/)
+[![JSVecX](https://raw.githubusercontent.com/raz0red/jsvecx/master/screenshots/jsvecx.jpg)](http://www.twitchasylum.com/jsvecx/)
 
 It is also worth noting that there is nothing illegal about posting the
 commercial Vectrex roms, they were made public domain in the 90's. 
