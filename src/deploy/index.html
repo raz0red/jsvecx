@@ -7,14 +7,10 @@
     <title>JSVecX: JavaScript port of VecX by raz0red.</title>
 
     <script src="js/jquery-min.js" type="text/javascript"></script>
-    <script src="js/jquery.dimensions.js" type="text/javascript"></script>
 
     <script src="js/utils.js" type="text/javascript"></script>
     <script src="js/globals.js" type="text/javascript"></script>
-    <!--
-    <script src="js/romdata.js" type="text/javascript"></script>
-    -->
-    <script src="js/fastromdata.js" type="text/javascript"></script>
+    <script src="js/fastromdata.js" type="text/javascript"></script> 
     <script src="js/e6809.js" type="text/javascript"></script>
     <script src="js/e8910.js" type="text/javascript"></script>
     <script src="js/osint.js" type="text/javascript"></script>
@@ -32,11 +28,11 @@
                         [ "Bedlam", "bedlam", "bedlam", "bedlam" ],
                         [ "Berzerk", "berzerk-debugged", "berzerk", "berzerk" ],
                         [ "Blitz", "blitz", "blitz", "blitz" ],
-                        /* [ "Clean Sweep", "sweep", "sweep", "none" ], */
+                        /*[ "Clean Sweep", "sweep", "sweep", "none" ], */
                         [ "Cosmic Chasm", "chasm", "chasm", "chasm" ],
                         [ "Fortress of Narzod", "narzod", "narzod", "narzod" ],
                         [ "Heads Up", "headsup", "headsup", "headsup" ],
-                        /* [ "Hyper Chase", "hyper", "hyper", "none" ], */
+                        /*[ "Hyper Chase", "hyper", "hyper", "none" ], */
                         [ "Mine Storm", "minestorm", "minestorm", "minestorm" ],
                         [ "Mine Storm 2", "mstorm2", "minestorm", "minestorm" ],
                         [ "Polar Rescue", "polar", "polar", "polar" ],
@@ -66,7 +62,7 @@
                         [ "All Good Things", "agt", "none", "none" ],
                         [ "Asteroid Cowboy", "asteroid_cowboy", "none", "asteroid_cowboy" ],
                         [ "Gravitrex plus", "gravplus", "none", "none" ],
-                        /*[ "Moonlander", "moon", "none", "none" ]*/
+                        /*[ "Moonlander", "moon", "none", "none" ],*/
                         [ "Nebula Commander", "nebula", "none", "none" ],
                         /*[ "Omega Chase", "Omega16k", "none", "none" ]*/
                         [ "Patriots", "patriot", "none", "none" ],
@@ -74,7 +70,7 @@
                         [ "Rockaroids Remix", "rocks", "none", "none" ],
                         [ "Space Frenzy", "sfpd", "none", "none" ],
                         [ "Spike Hoppin\'", "spikehop", "none", "none" ],
-                        /*[ "Spike\'s Water Balloons", "spikewater", "none", "none" ]*/
+                        /*[ "Spike\'s Water Balloons", "spikewater", "none", "none" ],*/
                         [ "Thrust", "thrust", "thrust", "thrust" ],
                         [ "Tsunami", "tsu", "none", "none" ],
                         [ "Vecmania 1", "vecmania1", "none", "none" ],
@@ -214,7 +210,7 @@
                         {
                             // Wait until the new overlay has completed loading
                             var imgOverlay = new Image();
-                            $(imgOverlay).load(
+                            $(imgOverlay).on('load',
                                 function()
                                 {
                                     // Fade the new overlay in
@@ -225,7 +221,7 @@
                                     var newBoxart = new Image();
 
                                     // Update the boxart
-                                    $(newBoxart).load(
+                                    $(newBoxart).on('load',
                                         function()
                                         {
                                             boxartImage.attr( "src", newBoxart.src );
@@ -360,15 +356,15 @@
             <img id="controlsImage" src="images/controls.png" alt="Controls" width="314" height="122">
         </div>
         <div id="romsSelector">
-	        <select id="roms"></select>        
+            <select id="roms"></select>        
         </div>
-	    <div id="buttons">
+        <div id="buttons">
             <a href="javascript:void(0)" title="Pause" id="pauseButton"><img id="pauseImage" src="images/pausebutton.png" width="64" height="54"></a>
             <a href="javascript:void(0)" title="Reset" id="resetButton"><img src="images/resetbutton.png" width="64" height="54"></a>
             <a href="javascript:void(0)" title="Toggle Sound" id="soundButton"><img id="soundImage" src="images/soundbutton.png" width="64" height="54"></a>                    
             <a href="javascript:void(0)" title="Toggle Overlay" id="overlayButton"><img src="images/overlaybutton.png" width="64" height="54"></a>        
-    	</div>
-	    <div id="status">Loading ...</div>
+        </div>
+        <div id="status">Loading ...</div>
         <div id="boxart">
             <img id="boxartImage" src="images/boxart/castle.png" width="270" height="332"/>
         </div>

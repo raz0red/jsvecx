@@ -1,108 +1,108 @@
 body {
-	background-color: #E0DFE3;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 11px;
-	color: #414141; 
-	margin: 20px 0 0 0;
+    background-color: #E0DFE3;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #414141; 
+    margin: 20px 0 0 0;
 }
 
 #wrapper {
-	width: 972px;	
-	margin: 0px auto;
-	position: relative;
+    width: 972px;	
+    margin: 0px auto;
+    position: relative;
 }
 
 #vectrex {
-	position:relative;
-	float:left;
-	background-image:url(images/vectrex.jpg);	
-	width: 576px;
-	height: 841px;
+    position:relative;
+    float:left;
+    background-image:url(images/vectrex.jpg);	
+    width: 576px;
+    height: 841px;
 }
 
 #description {
-	float:right;
-	width:396;
+    float:right;
+    width:396;
 }
 
 #descriptionContent {
-	padding:0 10px 0 10px; 
-	text-align:justify;
+    padding:0 10px 0 10px; 
+    text-align:justify;
 }
 
 #mask {
-	position:absolute;
-	left:120px; 
-	top:133px; 
-	width:331px;
-	height:422px;	
-	background-color:#000;
-	z-index:1;
+    position:absolute;
+    left:120px; 
+    top:133px; 
+    width:331px;
+    height:422px;	
+    background-color:#000;
+    z-index:1;
 }
 
 #screen {
-	position:absolute;
-	left:120px; /* 120px */
-	top:133px; /* 140px */
-	z-index:2;
+    position:absolute;
+    left:120px; /* 120px */
+    top:133px; /* 140px */
+    z-index:2;
 }
 
 #overlay {
-	position:absolute;
-	left:111px;
-	top:117px;
-	z-index:3;	
+    position:absolute;
+    left:111px;
+    top:117px;
+    z-index:3;	
 }
 
 #controls {
-	text-align:center;    
+    text-align:center;    
 }
 
 #boxart {
-	padding-top:10px;
-	text-align:center;    
+    padding-top:10px;
+    text-align:center;    
 }
 
 #buttons {
-	padding-top:12px;
-	text-align:center;    
+    padding-top:12px;
+    text-align:center;    
 }
 
 img {
-	border-width: 0px;
-	border-style: none;
+    border-width: 0px;
+    border-style: none;
 }
 
 #romsSelector {
-	padding-top:8px;
-	text-align:center;    	
+    padding-top:8px;
+    text-align:center;    	
 }
 
 .clear {
-	clear:both;	
+    clear:both;	
 }
 
 a:link, a:visited, a:active {
-	color: #414141;
-	text-decoration: underline;
-	font-weight: bold;
+    color: #414141;
+    text-decoration: underline;
+    font-weight: bold;
 }
 a:hover {
-	color: #414141;
-	text-decoration: underline;
+    color: #414141;
+    text-decoration: underline;
 }
 
 #roms {
-	color:#CCC;
-	background-color:#000;
-	padding:2px 2px 2px 5px;	
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
+    color:#CCC;
+    background-color:#000;
+    padding:2px 2px 2px 5px;	
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
 }
 
 #status {
-	color:#828282;
-	padding-top:8px;
-	text-align:center;
+    color:#828282;
+    padding-top:8px;
+    text-align:center;
 }
 

@@ -31,63 +31,71 @@ for %%x in (
 del tmp.js || goto :error
 
 
-%TOJSSTR% Globals.romdata  %ROMS_DIR%\rom.dat       >  %DEPLOY_JS_DIR%\romdata.js || goto :error
-%TOJSSTR% Globals.romdata  %ROMS_DIR%\fastrom.dat   >  %DEPLOY_JS_DIR%\fastromdata.js || goto :error
+CALL :romToJsStr  rom.dat,                  romdata.js
+CALL :romToJsStr  fastrom.dat,              fastromdata.js
 
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\3dczycst.bin  >  %DEPLOY_ROMS_DIR%\3dczycst.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\agt.bin       >  %DEPLOY_ROMS_DIR%\agt.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\armor.bin     >  %DEPLOY_ROMS_DIR%\armor.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\asteroid_cowboy.bin >  %DEPLOY_ROMS_DIR%\asteroid_cowboy.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\berzerk.bin   >  %DEPLOY_ROMS_DIR%\berzerk.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\BerzerkDebugged.vec >  %DEPLOY_ROMS_DIR%\berzerk-debugged.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\bedlam.bin    >  %DEPLOY_ROMS_DIR%\bedlam.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\blitz.bin     >  %DEPLOY_ROMS_DIR%\blitz.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\castle.bin    >  %DEPLOY_ROMS_DIR%\castle.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\chasm.bin     >  %DEPLOY_ROMS_DIR%\chasm.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\dktower.bin   >  %DEPLOY_ROMS_DIR%\dktower.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\frogger.bin   >  %DEPLOY_ROMS_DIR%\frogger.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\gravplus.bin  >  %DEPLOY_ROMS_DIR%\gravplus.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\headsup.bin   >  %DEPLOY_ROMS_DIR%\headsup.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\hyper.bin     >  %DEPLOY_ROMS_DIR%\hyper.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\MailPlane.BIN >  %DEPLOY_ROMS_DIR%\MailPlane.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\mine3.bin     >  %DEPLOY_ROMS_DIR%\mine3.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\minestorm.bin >  %DEPLOY_ROMS_DIR%\minestorm.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\moon.bin      >  %DEPLOY_ROMS_DIR%\moon.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\mstorm2.bin   >  %DEPLOY_ROMS_DIR%\mstorm2.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\narzod.bin    >  %DEPLOY_ROMS_DIR%\narzod.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\nebula.bin    >  %DEPLOY_ROMS_DIR%\nebula.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\Omega16k.bin  >  %DEPLOY_ROMS_DIR%\Omega16k.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\Pitchers.bin  >  %DEPLOY_ROMS_DIR%\Pitchers.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\patriot.bin   >  %DEPLOY_ROMS_DIR%\patriot.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\polar.bin     >  %DEPLOY_ROMS_DIR%\polar.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\pole.bin      >  %DEPLOY_ROMS_DIR%\pole.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\revector.bin  >  %DEPLOY_ROMS_DIR%\revector.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\ripoff.bin    >  %DEPLOY_ROMS_DIR%\ripoff.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\rocks.bin     >  %DEPLOY_ROMS_DIR%\rocks.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\scramble.bin  >  %DEPLOY_ROMS_DIR%\scramble.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\sfpd.bin      >  %DEPLOY_ROMS_DIR%\sfpd.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\solar.bin     >  %DEPLOY_ROMS_DIR%\solar.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\spike.bin     >  %DEPLOY_ROMS_DIR%\spike.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\spikehop.bin  >  %DEPLOY_ROMS_DIR%\spikehop.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\spikewater.bin>  %DEPLOY_ROMS_DIR%\spikewater.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\space.bin     >  %DEPLOY_ROMS_DIR%\space.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\spinball.bin  >  %DEPLOY_ROMS_DIR%\spinball.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\starhawk.bin  >  %DEPLOY_ROMS_DIR%\starhawk.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\starship.vec >  %DEPLOY_ROMS_DIR%\starship.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\startrek.bin  >  %DEPLOY_ROMS_DIR%\startrek.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\sweep.bin     >  %DEPLOY_ROMS_DIR%\sweep.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\tdf.bin       >  %DEPLOY_ROMS_DIR%\tdf.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\thrust.bin    >  %DEPLOY_ROMS_DIR%\thrust.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\tsu-dl.bin    >  %DEPLOY_ROMS_DIR%\tsu.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\vecmania1.bin >  %DEPLOY_ROMS_DIR%\vecmania1.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\vecmania2.bin >  %DEPLOY_ROMS_DIR%\vecmania2.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\Vectrexians-1999-PD.vec >  %DEPLOY_ROMS_DIR%\vectrexians.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\vix-dl.bin    >  %DEPLOY_ROMS_DIR%\vix.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\webwars.bin   >  %DEPLOY_ROMS_DIR%\webwars.js || goto :error
-%TOJSSTR% Globals.cartdata %ROMS_DIR%\wotr.bin      >  %DEPLOY_ROMS_DIR%\wotr.js || goto :error
+CALL :cartToJsStr 3dczycst.bin,             3dczycst.js
+CALL :cartToJsStr agt.bin,                  agt.js
+CALL :cartToJsStr armor.bin,                armor.js
+CALL :cartToJsStr asteroid_cowboy.bin,      asteroid_cowboy.js
+CALL :cartToJsStr berzerk.bin,              berzerk.js
+CALL :cartToJsStr BerzerkDebugged.vec,      berzerk-debugged.js
+CALL :cartToJsStr bedlam.bin,               bedlam.js
+CALL :cartToJsStr blitz.bin,                blitz.js
+CALL :cartToJsStr castle.bin,               castle.js 
+CALL :cartToJsStr chasm.bin,                chasm.js
+CALL :cartToJsStr dktower.bin,              dktower.js
+CALL :cartToJsStr frogger.bin,              frogger.js
+CALL :cartToJsStr gravplus.bin,             gravplus.js
+CALL :cartToJsStr headsup.bin,              headsup.js
+CALL :cartToJsStr hyper.bin,                hyper.js
+CALL :cartToJsStr MailPlane.BIN,            MailPlane.js
+CALL :cartToJsStr mine3.bin,                mine3.js
+CALL :cartToJsStr minestorm.bin,            minestorm.js
+CALL :cartToJsStr moon.bin,                 moon.js
+CALL :cartToJsStr mstorm2.bin,              mstorm2.js
+CALL :cartToJsStr narzod.bin,               narzod.js
+CALL :cartToJsStr nebula.bin,               nebula.js
+CALL :cartToJsStr Omega16k.bin,             Omega16k.js
+CALL :cartToJsStr Pitchers.bin,             Pitchers.js
+CALL :cartToJsStr patriot.bin,              patriot.js
+CALL :cartToJsStr polar.bin,                polar.js
+CALL :cartToJsStr pole.bin,                 pole.js
+CALL :cartToJsStr revector.bin,             revector.js
+CALL :cartToJsStr ripoff.bin,               ripoff.js
+CALL :cartToJsStr rocks.bin,                rocks.js
+CALL :cartToJsStr scramble.bin,             scramble.js
+CALL :cartToJsStr sfpd.bin,                 sfpd.js
+CALL :cartToJsStr solar.bin,                solar.js
+CALL :cartToJsStr spike.bin,                spike.js
+CALL :cartToJsStr spikehop.bin,             spikehop.js
+CALL :cartToJsStr spikewater.bin,           spikewater.js
+CALL :cartToJsStr space.bin,                space.js
+CALL :cartToJsStr spinball.bin,             spinball.js
+CALL :cartToJsStr starhawk.bin,             starhawk.js
+CALL :cartToJsStr starship.vec,             starship.js
+CALL :cartToJsStr startrek.bin,             startrek.js
+CALL :cartToJsStr sweep.bin,                sweep.js
+CALL :cartToJsStr tdf.bin,                  tdf.js
+CALL :cartToJsStr thrust.bin,               thrust.js
+CALL :cartToJsStr tsu-dl.bin,               tsu.js
+CALL :cartToJsStr vecmania1.bin,            vecmania1.js
+CALL :cartToJsStr vecmania2.bin,            vecmania2.js
+CALL :cartToJsStr Vectrexians-1999-PD.vec,  vectrexians.js
+CALL :cartToJsStr vix-dl.bin,               vix.js
+CALL :cartToJsStr webwars.bin,              webwars.js
+CALL :cartToJsStr wotr.bin,                 wotr.js
 
 goto :EOF
 
+:romToJsStr
+%TOJSSTR% Globals.romdata %ROMS_DIR%\%~1 > %DEPLOY_JS_DIR%\%~2 || goto :error
+EXIT /B 0
+
+:cartToJsStr
+%TOJSSTR% Globals.cartdata %ROMS_DIR%\%~1 > %DEPLOY_ROMS_DIR%\%~2 || goto :error
+EXIT /B 0
+
 :error
 echo Failed with error #%errorlevel%.
-exit /b %errorlevel%
+cmd /c exit -1073741510
