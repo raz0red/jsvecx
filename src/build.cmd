@@ -30,7 +30,6 @@ for %%x in (
 %CAT% %HEADER% tmp.js > %DEPLOY_JS_DIR%\e8910.js || goto :error
 del tmp.js || goto :error
 
-
 CALL :romToJsStr  rom.dat,                  romdata.js
 CALL :romToJsStr  fastrom.dat,              fastromdata.js
 
