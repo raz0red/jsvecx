@@ -1,8 +1,9 @@
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href="main.css" type="text/css" rel="stylesheet" rev="stylesheet"/>
+    <link href="main.css" type="text/css" rel="stylesheet" rev="stylesheet" />
 
     <title>JSVecX: JavaScript port of VecX by raz0red.</title>
 
@@ -10,7 +11,7 @@
 
     <script src="js/utils.js" type="text/javascript"></script>
     <script src="js/globals.js" type="text/javascript"></script>
-    <script src="js/fastromdata.js" type="text/javascript"></script> 
+    <script src="js/fastromdata.js" type="text/javascript"></script>
     <script src="js/e6809.js" type="text/javascript"></script>
     <script src="js/e8910.js" type="text/javascript"></script>
     <script src="js/osint.js" type="text/javascript"></script>
@@ -20,68 +21,63 @@
     <script src="js/roms/castle.js" type="text/javascript"></script>
 
     <script type="text/javascript" charset="utf-8">
-        var roms =
-            [
-                [ "Commercial",
-                    [
-                        [ "Armor Attack", "armor", "armor", "armor" ],
-                        [ "Bedlam", "bedlam", "bedlam", "bedlam" ],
-                        [ "Berzerk", "berzerk-debugged", "berzerk", "berzerk" ],
-                        [ "Blitz", "blitz", "blitz", "blitz" ],
-                        /*[ "Clean Sweep", "sweep", "sweep", "none" ], */
-                        [ "Cosmic Chasm", "chasm", "chasm", "chasm" ],
-                        [ "Fortress of Narzod", "narzod", "narzod", "narzod" ],
-                        [ "Heads Up", "headsup", "headsup", "headsup" ],
-                        /*[ "Hyper Chase", "hyper", "hyper", "none" ], */
-                        [ "Mine Storm", "minestorm", "minestorm", "minestorm" ],
-                        [ "Mine Storm 2", "mstorm2", "minestorm", "minestorm" ],
-                        [ "Polar Rescue", "polar", "polar", "polar" ],
-                        [ "Pole Position", "pole", "pole", "pole" ],
-                        [ "Ripoff", "ripoff", "ripoff", "ripoff" ],
-                        [ "Scramble", "scramble", "scramble", "scramble" ],
-                        [ "Solar Quest", "solar", "solar", "solar" ],
-                        [ "Space Wars", "space", "space", "space" ],
-                        [ "Spike", "spike", "spike", "spike" ],
-                        [ "Spinball", "spinball", "spinball", "spinball" ],
-                        [ "Star Castle", "castle", "castle", "castle" ],
-                        [ "Star Hawk", "starhawk", "starhawk", "starhawk" ],
-                        [ "Star Trek", "startrek", "startrek", "startrek" ],
-                        [ "Web Wars", "webwars", "webwars", "webwars" ]                        
-                    ]
-                ],
-                [ "Unreleased and Prototypes",
-                    [
-                        [ "Dark Tower", "dktower", "dktower", "none" ],
-                        /*[ "Mail Plane", "MailPlane", "none", "none" ],*/
-                        /*[ "Pitcher\'s Duel", "Pitchers", "none", "none" ],*/
-                        [ "Tour de France", "tdf", "none", "none" ]
-                    ]
-                ],
-                [ "Homebrew",
-                    [
-                        [ "All Good Things", "agt", "none", "none" ],
-                        [ "Asteroid Cowboy", "asteroid_cowboy", "none", "asteroid_cowboy" ],
-                        [ "Gravitrex plus", "gravplus", "none", "none" ],
-                        /*[ "Moonlander", "moon", "none", "none" ],*/
-                        [ "Nebula Commander", "nebula", "none", "none" ],
-                        /*[ "Omega Chase", "Omega16k", "none", "none" ]*/
-                        [ "Patriots", "patriot", "none", "none" ],
-                        [ "Revector", "revector", "none", "none" ],
-                        [ "Rockaroids Remix", "rocks", "none", "none" ],
-                        [ "Space Frenzy", "sfpd", "none", "none" ],
-                        [ "Spike Hoppin\'", "spikehop", "none", "none" ],
-                        /*[ "Spike\'s Water Balloons", "spikewater", "none", "none" ],*/
-                        [ "Thrust", "thrust", "thrust", "thrust" ],
-                        [ "Tsunami", "tsu", "none", "none" ],
-                        [ "Vecmania 1", "vecmania1", "none", "none" ],
-                        [ "Vecmania 2", "vecmania2", "none", "none" ],
-                        [ "Vectrex Frogger", "frogger", "none", "none" ],                        
-                        /*[ "Vectrexians", "vectrexians", "none", "vectrexians" ],*/
-                        [ "Vix", "vix", "none", "none" ],
-                        [ "War of the Robots", "wotr", "none", "none" ]                                                	
-                    ]
-                ]
-            ];
+        var roms = [
+            ["Commercial", [
+                ["Armor Attack", "armor", "armor", "armor"],
+                ["Bedlam", "bedlam", "bedlam", "bedlam"],
+                ["Berzerk", "berzerk-debugged", "berzerk", "berzerk"],
+                ["Blitz", "blitz", "blitz", "blitz"],
+                /*[ "Clean Sweep", "sweep", "sweep", "none" ], */
+                ["Cosmic Chasm", "chasm", "chasm", "chasm"],
+                ["Fortress of Narzod", "narzod", "narzod", "narzod"],
+                ["Heads Up", "headsup", "headsup", "headsup"],
+                /*[ "Hyper Chase", "hyper", "hyper", "none" ], */
+                ["Mine Storm", "minestorm", "minestorm", "minestorm"],
+                ["Mine Storm 2", "mstorm2", "minestorm", "minestorm"],
+                ["Polar Rescue", "polar", "polar", "polar"],
+                ["Pole Position", "pole", "pole", "pole"],
+                ["Ripoff", "ripoff", "ripoff", "ripoff"],
+                ["Scramble", "scramble", "scramble", "scramble"],
+                ["Solar Quest", "solar", "solar", "solar"],
+                ["Space Wars", "space", "space", "space"],
+                ["Spike", "spike", "spike", "spike"],
+                ["Spinball", "spinball", "spinball", "spinball"],
+                ["Star Castle", "castle", "castle", "castle"],
+                ["Star Hawk", "starhawk", "starhawk", "starhawk"],
+                ["Star Trek", "startrek", "startrek", "startrek"],
+                ["Web Wars", "webwars", "webwars", "webwars"]
+            ]],
+            ["Unreleased and Prototypes", [
+                ["Dark Tower", "dktower", "dktower", "none"],
+                /*[ "Mail Plane", "MailPlane", "none", "none" ],*/
+                /*[ "Pitcher\'s Duel", "Pitchers", "none", "none" ],*/
+                ["Tour de France", "tdf", "none", "none"]
+            ]],
+            ["Homebrew", [
+                ["All Good Things", "agt", "none", "none"],
+                ["Asteroid Cowboy", "asteroid_cowboy", "none", "asteroid_cowboy"],
+                ["Birds of Prey", "birds-of-prey", "none", "none"],
+                ["Gravitrex plus", "gravplus", "none", "none"],
+                /*[ "Moonlander", "moon", "none", "none" ],*/
+                ["Nebula Commander", "nebula", "none", "none"],
+                /*[ "Omega Chase", "Omega16k", "none", "none" ]*/
+                ["Patriots", "patriot", "none", "none"],
+                ["Patriots III", "patriots-iii", "none", "none"],
+                ["Revector", "revector", "none", "none"],
+                ["Rockaroids Remix", "rocks", "none", "none"],
+                ["Space Frenzy", "sfpd", "none", "none"],
+                ["Spike Hoppin\'", "spikehop", "none", "none"],
+                /*[ "Spike\'s Water Balloons", "spikewater", "none", "none" ],*/
+                ["Thrust", "thrust", "thrust", "thrust"],
+                ["Tsunami", "tsu", "none", "none"],
+                ["Vecmania 1", "vecmania1", "none", "none"],
+                ["Vecmania 2", "vecmania2", "none", "none"],
+                ["Vectrex Frogger", "frogger", "none", "none"],
+                /*[ "Vectrexians", "vectrexians", "none", "vectrexians" ],*/
+                ["Vix", "vix", "none", "none"],
+                ["War of the Robots", "wotr", "none", "none"]
+            ]]
+        ];
 
         var vecx = new VecX();
         var romsSelect = [];
@@ -92,171 +88,193 @@
 
         var pauseButtonImage = new Image();
         pauseButtonImage.src = "images/pausebutton.png";
-        
+
         var soundButtonImage = new Image();
         soundButtonImage.src = "images/soundbutton.png";
 
         var soundOffButtonImage = new Image();
         soundOffButtonImage.src = "images/soundoffbutton.png";
 
-        function overlayFade( isOut )
-        {
+        function overlayFade(isOut) {
             var overlay = $('#overlay');
-            if( !isOut )
-            {
-                overlay.fadeIn( OVERLAY_FADE );
-            }
-            else
-            {
-                overlay.fadeOut( OVERLAY_FADE );
+            if (!isOut) {
+                overlay.fadeIn(OVERLAY_FADE);
+            } else {
+                overlay.fadeOut(OVERLAY_FADE);
             }
             return false;
         }
 
-        function setPauseImage( showPause )
-        {
+        function setPauseImage(showPause) {
             var pauseImage = $('#pauseImage');
-            if( showPause )
-            {
-                pauseImage.attr( "src", pauseButtonImage.src )
-                    .attr( "title", "Pause" );
-            }
-            else
-            {
-                pauseImage.attr( "src", resumeButtonImage.src )
-                    .attr( "title", "Resume" );
+            if (showPause) {
+                pauseImage.attr("src", pauseButtonImage.src)
+                    .attr("title", "Pause");
+            } else {
+                pauseImage.attr("src", resumeButtonImage.src)
+                    .attr("title", "Resume");
             }
         }
-        
-        function setSoundImage( showSound )
-        {
-            var soundImage = $('#soundImage');
-            if( showSound )
-            {
-                soundImage.attr( "src", soundButtonImage.src )
-                    .attr( "title", "Toggle Sound" );
-            }
-            else
-            {
-                soundImage.attr( "src", soundOffButtonImage.src )
-                    .attr( "title", "Toggle Sound" );
-            }
-        }        
 
-        $(document).ready(function()
-        {
+        function setSoundImage(showSound) {
+            var soundImage = $('#soundImage');
+            if (showSound) {
+                soundImage.attr("src", soundButtonImage.src)
+                    .attr("title", "Toggle Sound");
+            } else {
+                soundImage.attr("src", soundOffButtonImage.src)
+                    .attr("title", "Toggle Sound");
+            }
+        }
+
+        function dropHandler(ev) {
+            ev.preventDefault();
+            var file = null;
+            if (ev.dataTransfer.items) {
+                for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+                    if (ev.dataTransfer.items[i].kind === 'file') {
+                        file = ev.dataTransfer.items[i].getAsFile();
+                        break;
+                    }
+                }
+            } else {
+                for (var i = 0; i < ev.dataTransfer.files.length; i++) {
+                    file = ev.dataTransfer.files[i];
+                    break;
+                }
+            }
+
+            if (file) {
+                if (file.size <= 100 * 1024) /* 100kb max */ {
+                    var reader = new FileReader();  
+                    reader.readAsBinaryString(file);
+                    $("#status").text("Processing file...");
+                     reader.onloadend = function() {            
+                        $("#status").text("Processing completed.");                                 
+                        Globals.cartdata = reader.result;                                         
+                        $("#roms").val("");
+                        switchRom([null, null, "none", "none"]);
+                    }                   
+                } else {
+                    $("#status").text("File too large.");
+                }                
+            }
+        }
+
+        function switchRom(rom) {
+            // Get the overlay (DIV)
+            var overlay = $('#overlay');
+
+            // Get the boxart image
+            var boxartImage = $('#boxartImage');
+
+            // Is the overlay visible?
+            var overlayVisible = !overlay.is(":hidden");
+
+            // Fade the old overlay out (if applicable)
+            if (overlayVisible) overlayFade(true);
+
+            // Fade the old boxart out
+            boxartImage.fadeOut(OVERLAY_FADE);
+
+            // Stop the emulator
+            vecx.stop();
+
+            // Clear the screen
+            vecx.osint.osint_clearscreen();
+
+            // Start the emulator
+            setTimeout(
+                function() {
+                    // Wait until the new overlay has completed loading
+                    var imgOverlay = new Image();
+                    $(imgOverlay).on('load',
+                        function() {
+                            // Fade the new overlay in
+                            $('#overlayImage').attr("src", imgOverlay.src);
+                            if (overlayVisible) overlayFade(false);
+
+
+                            var newBoxart = new Image();
+
+                            // Update the boxart
+                            $(newBoxart).on('load',
+                                function() {
+                                    boxartImage.attr("src", newBoxart.src);
+                                    boxartImage.fadeIn(OVERLAY_FADE + 200);
+                                }
+                            ).attr("src", "images/boxart/" + rom[3] + ".png");
+
+                            // Load the script for the new rom
+                            if (rom[1]) {
+                                $.getScript(
+                                    "js/roms/" + rom[1] + ".js",
+                                    function() // Rom script loaded
+                                    {
+                                        $("#status").text("Loaded.");
+                                        vecx.reset();
+
+                                        setPauseImage(true);
+                                    }
+                                );
+                            } else {
+                                vecx.reset();
+                                setPauseImage(true);
+                            }
+                        }
+                    ).attr("src", "images/overlays/" + rom[2] + ".png");
+                },
+                overlayVisible ? OVERLAY_FADE : 0
+            );
+        }
+
+        $(document).ready(function() {
             var romsElement = $("#roms");
 
             $("#status").text("Starting up...");
 
-            $("<option>Select a cartridge...</option>").attr( "value", "" ).appendTo( "#roms" );
-            for( var i = 0; i < roms.length; i++ )
-            {
+            $("<option>Select a cartridge...</option>").attr("value", "").appendTo("#roms");
+            for (var i = 0; i < roms.length; i++) {
                 var category = roms[i];
-                var optgroup = $( '<optgroup></optgroup>' ).attr( "label", category[0] );
+                var optgroup = $('<optgroup></optgroup>').attr("label", category[0]);
                 var catroms = category[1];
-                for( var j = 0; j < catroms.length; j++ )
-                {
+                for (var j = 0; j < catroms.length; j++) {
                     var rom = catroms[j];
 
-                    $( '<option>' + rom[0] + '</option>' )
-                        .attr( "value", romsSelect.length )
-                        .appendTo( optgroup );
+                    $('<option>' + rom[0] + '</option>')
+                        .attr("value", romsSelect.length)
+                        .appendTo(optgroup);
 
                     romsSelect[romsSelect.length] = rom;
                 }
-                romsElement.append( optgroup );
+                romsElement.append(optgroup);
             }
-            romsElement.append( '<optgroup> </optgroup>' );
-            romsElement.val( "" );
+            romsElement.append('<optgroup> </optgroup>');
+            romsElement.val("");
 
             romsElement.change(
-                function()
-                {
-                    if( romsElement.val() == "" ) return;
+                function() {
+                    if (romsElement.val() == "") return;
 
                     // Remove focus from the roms element
                     romsElement.blur();
 
                     // Get the newly selected rom
-                    var rom = romsSelect[ romsElement.val() ];
+                    var rom = romsSelect[romsElement.val()];
 
-                    $("#status").text( "Loading " + rom[0] + " ..." );                    
+                    $("#status").text("Loading " + rom[0] + " ...");
 
-                    // Get the overlay (DIV)
-                    var overlay = $('#overlay');
-
-                    // Get the boxart image
-                    var boxartImage = $('#boxartImage');
-
-                    // Is the overlay visible?
-                    var overlayVisible = !overlay.is(":hidden");
-
-                    // Fade the old overlay out (if applicable)
-                    if( overlayVisible ) overlayFade( true );
-
-                    // Fade the old boxart out
-                    boxartImage.fadeOut( OVERLAY_FADE );
-
-                    // Stop the emulator
-                    vecx.stop();
-
-                    // Clear the screen
-                    vecx.osint.osint_clearscreen();
-
-                    // Start the emulator
-                    setTimeout(
-                        function()
-                        {
-                            // Wait until the new overlay has completed loading
-                            var imgOverlay = new Image();
-                            $(imgOverlay).on('load',
-                                function()
-                                {
-                                    // Fade the new overlay in
-                                    $('#overlayImage').attr( "src", imgOverlay.src );
-                                    if( overlayVisible ) overlayFade( false );
-
-
-                                    var newBoxart = new Image();
-
-                                    // Update the boxart
-                                    $(newBoxart).on('load',
-                                        function()
-                                        {
-                                            boxartImage.attr( "src", newBoxart.src );
-                                            boxartImage.fadeIn( OVERLAY_FADE + 200 );
-                                        }
-                                    ).attr( "src", "images/boxart/"+rom[3]+".png" );
-
-                                    // Load the script for the new rom
-                                    $.getScript(
-                                        "js/roms/"+rom[1]+".js",
-                                        function() // Rom script loaded
-                                        {
-                                            $("#status").text( "Loaded." );
-                                            vecx.reset();
-
-                                            setPauseImage( true );
-                                        }
-                                    );
-                                }
-                            ).attr( "src", "images/overlays/"+rom[2]+".png" );
-                        },
-                        overlayVisible ? OVERLAY_FADE : 0
-                    );
+                    switchRom(rom);
                 }
             );
 
             document.onkeydown =
-                function( event )
-                {
+                function(event) {
                     vecx.onkeydown(event)
                 };
 
             document.onkeyup =
-                function( event )
-                {
+                function(event) {
                     vecx.onkeyup(event)
                 };
 
@@ -269,107 +287,117 @@
             */
 
             $("#pauseButton").click(
-                function()
-                {
+                function() {
                     var pauseImage = $('#pauseImage');
-                    if( vecx.running )
-                    {
+                    if (vecx.running) {
                         vecx.stop();
-                        $("#status").text( "Paused." );
-                        setPauseImage( false );
-                    }
-                    else
-                    {
+                        $("#status").text("Paused.");
+                        setPauseImage(false);
+                    } else {
                         vecx.start();
-                        $("#status").text( "Resumed." );
-                        setPauseImage( true );
+                        $("#status").text("Resumed.");
+                        setPauseImage(true);
                     }
                 }
             );
 
             $("#resetButton").click(
-                function()
-                {
+                function() {
                     vecx.reset();
-                    $("#status").text( "Reset." );
-                    setPauseImage( true );
+                    $("#status").text("Reset.");
+                    setPauseImage(true);
                 }
             );
 
             $('#overlayButton').click(
-                function()
-                {
+                function() {
                     var overlay = $('#overlay');
                     var hidden = overlay.is(":hidden");
-                    
-                    overlayFade( !hidden );
+
+                    overlayFade(!hidden);
 
                     $("#status").text(
-                        hidden ? "Overlay enabled." : "Overlay disabled." );
+                        hidden ? "Overlay enabled." : "Overlay disabled.");
                 }
             );
-            
+
             $('#soundButton').click(
-                function()
-                {
-                    if( vecx.toggleSoundEnabled() )
-                    {
-                        $("#status").text( "Sound enabled." );
-                        setSoundImage( true );
-                    }
-                    else
-                    {
-                        $("#status").text( "Sound disabled." );
-                        setSoundImage( false );
+                function() {
+                    if (vecx.toggleSoundEnabled()) {
+                        $("#status").text("Sound enabled.");
+                        setSoundImage(true);
+                    } else {
+                        $("#status").text("Sound disabled.");
+                        setSoundImage(false);
                     }
                 }
             );
+
+            // Drag and drop
+            $('body').on('drop dragdrop', function(evt) {
+                evt.dataTransfer = evt.originalEvent.dataTransfer
+                dropHandler(evt);
+                event.preventDefault();
+            });
+            $('body').on('dragenter', function(event) {
+                event.preventDefault();
+                //$(this).css('border','10px dashed red');
+            });
+            $('body').on('dragleave', function() {
+                //$(this).css('background','red');
+            });
+            $('body').on('dragover', function(event) {
+                event.preventDefault();
+            });
+
 
             vecx.main();
         });
     </script>
 </head>
+
 <body>
-<div id="wrapper">
-    <div id="vectrex">
-        <div id="mask"></div>
-        <div id="overlay"><img id="overlayImage" src="images/overlays/castle.png" width="351" height="449"/></div>
-        <canvas id="screen" width="330" height="410"></canvas>
+    <div id="wrapper">
+        <div id="vectrex">
+            <div id="mask"></div>
+            <div id="overlay"><img id="overlayImage" src="images/overlays/castle.png" width="351" height="449" /></div>
+            <canvas id="screen" width="330" height="410"></canvas>
+        </div>
+        <div id="description">
+            <img src="images/banner.png" width="396" height="120" alt="JSVecX" />
+            <div id="descriptionContent">
+                <p>
+                    <strong>JSVecX</strong> by <a href="http://www.twitchasylum.com">raz0red</a> is a <strong>JavaScript</strong> port of the
+                    <a href="http://www.valavan.net/vectrex.html">VecX</a>
+                    <a href="http://en.wikipedia.org/wiki/Vectrex">Vectrex</a> emulator originally developed by <strong>Valavan Manohararajah</strong>. For additional information please visit the
+                    <a href="http://www.twitchasylum.com/forum/viewtopic.php?p=3112#3112">JSVecX forum thread</a>.
+                </p>
+                <p>
+                    This port relies on the HTML5 <a href="http://en.wikipedia.org/wiki/Html5_canvas">Canvas</a> element and the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a>.
+                </p>
+                <p>
+                    Select a cartridge from the pull-down list or drag and drop a local ROM file onto the Vectrex.
+                </p>
+            </div>
+            <div id="controls">
+                <img id="controlsImage" src="images/controls.png" alt="Controls" width="314" height="122">
+            </div>
+            <div id="romsSelector">
+                <select id="roms"></select>
+            </div>
+            <div id="buttons">
+                <a href="javascript:void(0)" title="Pause" id="pauseButton"><img id="pauseImage" src="images/pausebutton.png" width="64" height="54"></a>
+                <a href="javascript:void(0)" title="Reset" id="resetButton"><img src="images/resetbutton.png" width="64" height="54"></a>
+                <a href="javascript:void(0)" title="Toggle Sound" id="soundButton"><img id="soundImage" src="images/soundbutton.png" width="64" height="54"></a>
+                <a href="javascript:void(0)" title="Toggle Overlay" id="overlayButton"><img src="images/overlaybutton.png" width="64" height="54"></a>
+            </div>
+            <div id="status">Loading ...</div>
+            <div id="boxart">
+                <img id="boxartImage" src="images/boxart/castle.png" width="270" height="332" />
+            </div>
+        </div>
+        <div class="clear"></div>
     </div>
-    <div id="description">
-        <img src="images/banner.png" width="396" height="120" alt="JSVecX"/>
-        <div id="descriptionContent">
-            <p>
-                <strong>JSVecX</strong> by <a
-                href="http://www.twitchasylum.com">raz0red</a> is a <strong>JavaScript</strong> port of the
-                <a href="http://www.valavan.net/vectrex.html">VecX</a> 
-                <a href="http://en.wikipedia.org/wiki/Vectrex">Vectrex</a> emulator.
-                The original <strong>C</strong> version was developed by <strong>Valavan Manohararajah</strong>.
-                For status updates, known issues, or to provide feedback please visit the
-                <a href="http://www.twitchasylum.com/forum/viewtopic.php?p=3112#3112">JSVecX forum thread</a>.
-            </p>
-            <p>
-                This port relies on the HTML5 <a href="http://en.wikipedia.org/wiki/Html5_canvas">Canvas</a> element for display and the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a> for sound (no flash is required).
-            </p>
-        </div>
-        <div id="controls">
-            <img id="controlsImage" src="images/controls.png" alt="Controls" width="314" height="122">
-        </div>
-        <div id="romsSelector">
-            <select id="roms"></select>        
-        </div>
-        <div id="buttons">
-            <a href="javascript:void(0)" title="Pause" id="pauseButton"><img id="pauseImage" src="images/pausebutton.png" width="64" height="54"></a>
-            <a href="javascript:void(0)" title="Reset" id="resetButton"><img src="images/resetbutton.png" width="64" height="54"></a>
-            <a href="javascript:void(0)" title="Toggle Sound" id="soundButton"><img id="soundImage" src="images/soundbutton.png" width="64" height="54"></a>                    
-            <a href="javascript:void(0)" title="Toggle Overlay" id="overlayButton"><img src="images/overlaybutton.png" width="64" height="54"></a>        
-        </div>
-        <div id="status">Loading ...</div>
-        <div id="boxart">
-            <img id="boxartImage" src="images/boxart/castle.png" width="270" height="332"/>
-        </div>
-    </div>
-    <div class="clear"></div>
-</div>
 </body>
+
 </html>

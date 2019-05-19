@@ -39,6 +39,7 @@ CALL :cartToJsStr armor.bin,                armor.js
 CALL :cartToJsStr asteroid_cowboy.bin,      asteroid_cowboy.js
 CALL :cartToJsStr berzerk.bin,              berzerk.js
 CALL :cartToJsStr BerzerkDebugged.vec,      berzerk-debugged.js
+CALL :cartToJsStr BirdsofPrey(1999).vec     birds-of-prey.js
 CALL :cartToJsStr bedlam.bin,               bedlam.js
 CALL :cartToJsStr blitz.bin,                blitz.js
 CALL :cartToJsStr castle.bin,               castle.js 
@@ -58,6 +59,7 @@ CALL :cartToJsStr nebula.bin,               nebula.js
 CALL :cartToJsStr Omega16k.bin,             Omega16k.js
 CALL :cartToJsStr Pitchers.bin,             Pitchers.js
 CALL :cartToJsStr patriot.bin,              patriot.js
+CALL :cartToJsStr PatriotsIII.vec           patriots-iii.js
 CALL :cartToJsStr polar.bin,                polar.js
 CALL :cartToJsStr pole.bin,                 pole.js
 CALL :cartToJsStr revector.bin,             revector.js
