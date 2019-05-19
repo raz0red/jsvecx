@@ -45,7 +45,7 @@ Change Log
  - Added ability to "drag and drop" local ROM files
  - Added "Birds of Prey" homebrew game
  - Added "Patriots III" homebrew game
- - Updated to latest version of JQuery (3.4.1)
+ - Updated to latest version of jQuery (3.4.1)
 
 05/14/19
 -------------------
