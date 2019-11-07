@@ -1,28 +1,9 @@
 /*
 JSVecX : JavaScript port of the VecX emulator by raz0red.
-         Copyright (C) 2010-2019 raz0red (twitchasylum.com)
+         Copyright (C) 2010-2019 raz0red
 
 The original C version was written by Valavan Manohararajah
 (http://valavan.net/vectrex.html).
-
-This software is provided 'as-is', without any express or implied
-warranty.  In no event will the authors be held liable for any
-damages arising from the use of this software.
-
-Permission is granted to anyone to use this software for any
-purpose, including commercial applications, and to alter it and
-redistribute it freely, subject to the following restrictions:
-
-1.	The origin of this software must not be misrepresented; you
-must not claim that you wrote the original software. If you use
-this software in a product, an acknowledgment in the product
-documentation would be appreciated but is not required.
-
-2.	Altered source versions must be plainly marked as such, and
-must not be misrepresented as being the original software.
-
-3.	This notice may not be removed or altered from any source
-distribution.
 */
 
 /*
@@ -31,7 +12,6 @@ distribution.
   Based on various code snippets by Ville Hallik, Michael Cuddy,
   Tatsuyuki Satoh, Fabrice Frances, Nicola Salmoria.
 */
-
 
 function e6809()
 {
@@ -323,16 +303,16 @@ function e6809()
         var r = (~data) & 0xffff;
         this.reg_cc=((this.reg_cc&~this.FLAG_N)|( ((r>>7)&1) *this.FLAG_N)) ;
         this.reg_cc=((this.reg_cc&~this.FLAG_Z)|(this.test_z8(r)*this.FLAG_Z)) ;
-        this.reg_cc=((this.reg_cc&~this.FLAG_V)) ;
-        this.reg_cc=((this.reg_cc&~this.FLAG_C)|(this.FLAG_C)) ;
+        this.reg_cc=((this.reg_cc&~this.FLAG_V)|(0*this.FLAG_V)) ;
+        this.reg_cc=((this.reg_cc&~this.FLAG_C)|(1*this.FLAG_C)) ;
         return r;
     }
     this.inst_lsr = function( data )
     {
         var r = (data >> 1) & 0x7f;
-        this.reg_cc=((this.reg_cc&~this.FLAG_N)) ;
+        this.reg_cc=((this.reg_cc&~this.FLAG_N)|(0*this.FLAG_N)) ;
         this.reg_cc=((this.reg_cc&~this.FLAG_Z)|(this.test_z8(r)*this.FLAG_Z)) ;
-        this.reg_cc=((this.reg_cc&~this.FLAG_C)|(data & this.FLAG_C)) ;
+        this.reg_cc=((this.reg_cc&~this.FLAG_C)|(data & 1*this.FLAG_C)) ;
         return r;
     }
     this.inst_ror = function( data )
@@ -341,7 +321,7 @@ function e6809()
         var r = ((data >> 1) & 0x7f) | (c << 7);
         this.reg_cc=((this.reg_cc&~this.FLAG_N)|( ((r>>7)&1) *this.FLAG_N)) ;
         this.reg_cc=((this.reg_cc&~this.FLAG_Z)|(this.test_z8(r)*this.FLAG_Z)) ;
-        this.reg_cc=((this.reg_cc&~this.FLAG_C)|(data & this.FLAG_C)) ;
+        this.reg_cc=((this.reg_cc&~this.FLAG_C)|(data & 1*this.FLAG_C)) ;
         return r;
     }
     this.inst_asr = function( data )
@@ -349,7 +329,7 @@ function e6809()
         var r = ((data >> 1) & 0x7f) | (data & 0x80);
         this.reg_cc=((this.reg_cc&~this.FLAG_N)|( ((r>>7)&1) *this.FLAG_N)) ;
         this.reg_cc=((this.reg_cc&~this.FLAG_Z)|(this.test_z8(r)*this.FLAG_Z)) ;
-        this.reg_cc=((this.reg_cc&~this.FLAG_C)|(data & this.FLAG_C)) ;
+        this.reg_cc=((this.reg_cc&~this.FLAG_C)|(data & 1*this.FLAG_C)) ;
         return r;
     }
     this.inst_asl = function( data )
@@ -400,20 +380,20 @@ function e6809()
     {
         this.reg_cc=((this.reg_cc&~this.FLAG_N)|( ((data>>7)&1) *this.FLAG_N)) ;
         this.reg_cc=((this.reg_cc&~this.FLAG_Z)|(this.test_z8(data)*this.FLAG_Z)) ;
-        this.reg_cc=((this.reg_cc&~this.FLAG_V)) ;
+        this.reg_cc=((this.reg_cc&~this.FLAG_V)|(0*this.FLAG_V)) ;
     }
     this.inst_tst16 = function( data )
     {
         this.reg_cc=((this.reg_cc&~this.FLAG_N)|( ((data >> 8>>7)&1) *this.FLAG_N)) ;
         this.reg_cc=((this.reg_cc&~this.FLAG_Z)|(this.test_z16(data)*this.FLAG_Z)) ;
-        this.reg_cc=((this.reg_cc&~this.FLAG_V)) ;
+        this.reg_cc=((this.reg_cc&~this.FLAG_V)|(0*this.FLAG_V)) ;
     }
     this.inst_clr = function()
     {
-        this.reg_cc=((this.reg_cc&~this.FLAG_N)) ;
-        this.reg_cc=((this.reg_cc&~this.FLAG_Z)|(this.FLAG_Z)) ;
-        this.reg_cc=((this.reg_cc&~this.FLAG_V)) ;
-        this.reg_cc=((this.reg_cc&~this.FLAG_C)) ;
+        this.reg_cc=((this.reg_cc&~this.FLAG_N)|(0*this.FLAG_N)) ;
+        this.reg_cc=((this.reg_cc&~this.FLAG_Z)|(1*this.FLAG_Z)) ;
+        this.reg_cc=((this.reg_cc&~this.FLAG_V)|(0*this.FLAG_V)) ;
+        this.reg_cc=((this.reg_cc&~this.FLAG_C)|(0*this.FLAG_C)) ;
     }
     this.inst_sub8 = function( data0, data1 )
     {
@@ -727,11 +707,11 @@ function e6809()
             {
                 if( this.irq_status != this.IRQ_CWAI )
                 {
-                    this.reg_cc=((this.reg_cc&~this.FLAG_E)) ;
+                    this.reg_cc=((this.reg_cc&~this.FLAG_E)|(0*this.FLAG_E)) ;
                     this.inst_psh(0x81, this.reg_s, this.reg_u.value, cycles);
                 }
-                this.reg_cc=((this.reg_cc&~this.FLAG_I)|(this.FLAG_I)) ;
-                this.reg_cc=((this.reg_cc&~this.FLAG_F)|(this.FLAG_F)) ;
+                this.reg_cc=((this.reg_cc&~this.FLAG_I)|(1*this.FLAG_I)) ;
+                this.reg_cc=((this.reg_cc&~this.FLAG_F)|(1*this.FLAG_F)) ;
                 this.reg_pc = this.read16(0xfff6);
                 this.irq_status = this.IRQ_NORMAL;
                 cycles.value+=(7);
@@ -746,24 +726,24 @@ function e6809()
         }
         if( irq_i )
         {
-            if( ((this.reg_cc / this.FLAG_I >> 0) & 1) != 0 )
+            if(  ((this.reg_cc/this.FLAG_I>>0)&1)  == 0 )
+            {
+                if( this.irq_status != this.IRQ_CWAI )
+                {
+                    this.reg_cc=((this.reg_cc&~this.FLAG_E)|(1*this.FLAG_E)) ;
+                    this.inst_psh(0xff, this.reg_s, this.reg_u.value, cycles);
+                }
+                this.reg_cc=((this.reg_cc&~this.FLAG_I)|(1*this.FLAG_I)) ;
+                this.reg_pc = this.read16(0xfff8);
+                this.irq_status = this.IRQ_NORMAL;
+                cycles.value+=(7);
+            }
+            else
             {
                 if( this.irq_status == this.IRQ_SYNC )
                 {
                     this.irq_status = this.IRQ_NORMAL;
                 }
-            }
-            else
-            {
-                if( this.irq_status != this.IRQ_CWAI )
-                {
-                    this.reg_cc = ((this.reg_cc & ~this.FLAG_E) | (this.FLAG_E));
-                    this.inst_psh(0xff, this.reg_s, this.reg_u.value, cycles);
-                }
-                this.reg_cc = ((this.reg_cc & ~this.FLAG_I) | (this.FLAG_I));
-                this.reg_pc = this.read16(0xfff8);
-                this.irq_status = this.IRQ_NORMAL;
-                cycles.value+=(7);
             }
         }
         if( this.irq_status != this.IRQ_NORMAL )
@@ -1681,7 +1661,7 @@ function e6809()
                 r = (this.reg_a & 0xff) * (this.reg_b & 0xff);
                 this.set_reg_d(r);
                 this.reg_cc=((this.reg_cc&~this.FLAG_Z)|(this.test_z16(r)*this.FLAG_Z)) ;
-                this.reg_cc=((this.reg_cc&~this.FLAG_C)|((r >> 7) & this.FLAG_C)) ;
+                this.reg_cc=((this.reg_cc&~this.FLAG_C)|((r >> 7) & 1*this.FLAG_C)) ;
                 cycles.value+=(11);
                 break;
             case 0x20:
@@ -1828,10 +1808,10 @@ function e6809()
                 cycles.value+=(3);
                 break;
             case 0x3f:
-                this.reg_cc=((this.reg_cc&~this.FLAG_E)|(this.FLAG_E)) ;
+                this.reg_cc=((this.reg_cc&~this.FLAG_E)|(1*this.FLAG_E)) ;
                 this.inst_psh(0xff, this.reg_s, this.reg_u.value, cycles);
-                this.reg_cc=((this.reg_cc&~this.FLAG_I)|(this.FLAG_I)) ;
-                this.reg_cc=((this.reg_cc&~this.FLAG_F)|(this.FLAG_F)) ;
+                this.reg_cc=((this.reg_cc&~this.FLAG_I)|(1*this.FLAG_I)) ;
+                this.reg_cc=((this.reg_cc&~this.FLAG_F)|(1*this.FLAG_F)) ;
                 this.reg_pc = this.read16(0xfffa);
                 cycles.value+=(7);
                 break;
@@ -1857,13 +1837,13 @@ function e6809()
                 this.reg_a = i0 + i1;
                 this.reg_cc=((this.reg_cc&~this.FLAG_N)|( ((this.reg_a>>7)&1) *this.FLAG_N)) ;
                 this.reg_cc=((this.reg_cc&~this.FLAG_Z)|(this.test_z8(this.reg_a)*this.FLAG_Z)) ;
-                this.reg_cc=((this.reg_cc&~this.FLAG_V)) ;
+                this.reg_cc=((this.reg_cc&~this.FLAG_V)|(0*this.FLAG_V)) ;
                 this.reg_cc=((this.reg_cc&~this.FLAG_C)|(this.test_c(i0, i1, this.reg_a, 0)*this.FLAG_C)) ;
                 cycles.value+=(2);
                 break;
             case 0x3c:
                 var val = this.vecx.read8(this.reg_pc++);
-                this.reg_cc=((this.reg_cc&~this.FLAG_E)|(this.FLAG_E)) ;
+                this.reg_cc=((this.reg_cc&~this.FLAG_E)|(1*this.FLAG_E)) ;
                 this.inst_psh(0xff, this.reg_s, this.reg_u.value, cycles);
                 this.irq_status = this.IRQ_CWAI;
                 this.reg_cc &= val;
@@ -2027,7 +2007,7 @@ function e6809()
                         cycles.value+=(7);
                         break;
                     case 0x3f:
-                        this.reg_cc=((this.reg_cc&~this.FLAG_E)|(this.FLAG_E)) ;
+                        this.reg_cc=((this.reg_cc&~this.FLAG_E)|(1*this.FLAG_E)) ;
                         this.inst_psh(0xff, this.reg_s, this.reg_u.value, cycles);
                         this.reg_pc = this.read16(0xfff4);
                         cycles.value+=(8);
@@ -2080,7 +2060,7 @@ function e6809()
                         cycles.value+=(8);
                         break;
                     case 0x3f:
-                        this.reg_cc=((this.reg_cc&~this.FLAG_E)|(this.FLAG_E)) ;
+                        this.reg_cc=((this.reg_cc&~this.FLAG_E)|(1*this.FLAG_E)) ;
                         this.inst_psh(0xff, this.reg_s, this.reg_u.value, cycles);
                         this.reg_pc = this.read16(0xfff2);
                         cycles.value+=(8);
