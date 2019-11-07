@@ -34,37 +34,31 @@ commercial Vectrex roms, they were made available for non-commercial use in the 
 
 ## Change Log
 
-05/19/19 (0.2.1)
---
+### 05/19/19 (0.2.1)
     - Added ability to "drag and drop" local ROM files
     - Added "Birds of Prey" homebrew game
     - Added "Patriots III" homebrew game
     - Updated to latest version of jQuery (3.4.1)
 
-05/14/19 (0.2.0)
---
+### 05/14/19 (0.2.0)
     - Initial sound support (still quite buggy)
     - Added "Asteroid Cowboy" homebrew game
     - Added box art for Thrust and Minestorm
     - Removed Chrome frame extension (deprecated long ago)
 
-05/22/10 (0.1.0)
---
+### 05/22/10 (0.1.0)
     - Added support for Google Chrome Frame. This will prompt IE users to install
       this plugin which allows JSVecX to run within Internet Explorer. 
 
-05/19/10 
---
+### 05/19/10 
     - Thanks to an awesome tip from Parabellum, author of the great Vectrex
       emulator ParaJVE, it appears that the Mine Storm bug is now resolved. 
     - Another fix thanks to Parabellum's notes, Bedlam is now working
     - Added Polar Rescue, now works thanks to fixes listed above. 
 
-05/18/10 
---
+### 05/18/10 
     - Updated to use "fast boot rom", reduces the Vectrex intro screen time
     - Several optimizations. 
  
-05/09/10 
---
+### 05/09/10 
     - Initial release
