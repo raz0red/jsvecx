@@ -91,7 +91,7 @@ function e6809()
 //    {
 //        return ( this.reg_cc / flag >> 0 ) & 1;
 //    }
-#define GETCC( flag ) ((this.reg_cc/flag>>0)&1)
+#define GETCC(flag) ((this.reg_cc/flag>>0)&1)
 
     /*
     * set a particular condition code to either 0 or 1.
@@ -104,7 +104,7 @@ function e6809()
 //        this.reg_cc &= ~flag;
 //        this.reg_cc |= value * flag;
 //    }
-#define SETCC( flag, value ) this.reg_cc=((this.reg_cc&~flag)|(value*flag))
+#define SETCC(flag,value) this.reg_cc=((this.reg_cc&~flag)|(value*flag))
 
     /* test carry */
 
@@ -175,7 +175,7 @@ function e6809()
 
         return flag;
     }
-#define TESTV( i0, i1, r ) ((((~(i0^i1))&(i0^r))>>7)&1)
+#define TESTV(i0,i1,r) ((((~(i0^i1))&(i0^r))>>7)&1)
 
 //    //static einline unsigned get_reg_d (void)
 //    this.get_reg_d = function()
@@ -244,7 +244,7 @@ function e6809()
 //        return this.vecx.read8(sp.value++);
 //        //(*sp)++;
 //    }
-#define PULL8( sp ) (this.vecx.read8(sp.value++))
+#define PULL8(sp) (this.vecx.read8(sp.value++))
 
     //static einline void push16 (unsigned *sp, unsigned data)
     this.push16 = function( sp, data )
@@ -970,7 +970,7 @@ function e6809()
         /* 0xffff when taken, 0 when not taken */
         this.reg_pc += this.sign_extend(offset) & mask;
 
-        //*cycles += 3;        
+        //*cycles += 3;
         cycles.value+=(3);
     }
 
@@ -1271,7 +1271,7 @@ function e6809()
     {
         //unsigned op;
         //unsigned cycles = 0;
-        //unsigned ea, i0, i1, r;        
+        //unsigned ea, i0, i1, r;
 
         var op = 0;
         var cycles = this.cycles;
@@ -3128,7 +3128,7 @@ function e6809()
             console.log( negstr );
         }
     }
-#endif    
+#endif
 
     this.init = function( vecx )
     {

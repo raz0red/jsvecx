@@ -19,7 +19,7 @@ function VecX()
 
     this.osint = new osint();
     this.e6809 = new e6809();
-    this.e8910 = new e8910();    
+    this.e8910 = new e8910();
 
     /* Memory */
 
@@ -38,7 +38,7 @@ function VecX()
     //unsigned snd_regs[16];
     this.snd_regs = new Array(16);
     this.e8910.init(this.snd_regs);
-    
+
     //static unsigned snd_select;
     this.snd_select = 0;
 
@@ -456,7 +456,7 @@ function VecX()
 
     //void write8 (unsigned address, unsigned char data)
     this.write8 = function( address, data )
-    {        
+    {
         address &= 0xffff;
         data &= 0xff;
 
@@ -783,7 +783,7 @@ function VecX()
                 this.vectors_draw[i].reset();
             }
         }
-        
+
         for( var i = 0; i < this.vectors_erse.length; i++ )
         {
             if( !this.vectors_erse[i] )
@@ -1041,7 +1041,7 @@ function VecX()
         index = this.vector_hash[key];
         if( index >= 0 && index < this.vector_draw_cnt )
         {
-            curVec = this.vectors_draw[index];            
+            curVec = this.vectors_draw[index];
         }
 
         if( curVec != null &&
@@ -1237,7 +1237,7 @@ function VecX()
 
             for( c = 0; c < icycles; c++ )
             {
-                //this.via_sstep0();                
+                //this.via_sstep0();
 //
 // via_sstep0 inline begin
 //
@@ -1637,14 +1637,14 @@ function VecX()
         this.fpsTimer = setInterval(
             function()
             {
-                $("#status").text(  "FPS: " +
+                vecx.status = "FPS: " +
                     ( vecx.count / ( new Date().getTime() - vecx.startTime )
                         * 1000.0 ).toFixed(2) + " (50)" +
                     ( vecx.extraTime > 0 ?
                        ( ", extra: " +
                             ( vecx.extraTime / ( vecx.count / 50 ) ).toFixed(2)
-                                + " (ms)" ) : "" ) );
-                    
+                                + " (ms)" ) : "" );
+
                 if( vecx.count > 500 )
                 {
                     vecx.startTime = new Date().getTime();
@@ -1657,7 +1657,7 @@ function VecX()
         var f = function()
         {
             if( !vecx.running ) return;
-
+            /* DrSnuggles: moved to input.js
             vecx.alg_jch0 =
                  ( vecx.leftHeld ? 0x00 :
                      ( vecx.rightHeld ? 0xff :
@@ -1667,10 +1667,10 @@ function VecX()
                  ( vecx.downHeld ? 0x00 :
                     ( vecx.upHeld ? 0xff :
                         0x80 ) );
-
+            */
             vecx.snd_regs[14] = vecx.shadow_snd_regs14;
 
-            vecx.vecx_emu.call( vecx, cycles, 0 );            
+            vecx.vecx_emu.call( vecx, cycles, 0 );
             vecx.count++;
 
             var now = new Date().getTime();
@@ -1678,7 +1678,7 @@ function VecX()
             vecx.extraTime += waitTime;
             if( waitTime < -EMU_TIMER ) waitTime = -EMU_TIMER;
 
-            vecx.nextFrameTime = now + EMU_TIMER + waitTime;            
+            vecx.nextFrameTime = now + EMU_TIMER + waitTime;
 
             setTimeout( function() { f(); }, waitTime );
         };
@@ -1710,12 +1710,12 @@ function VecX()
         }
     }
 
-    this.main = function()
+    this.main = function( canv )
     {
-        this.osint.init( this );
+        this.osint.init( this, canv );  // DrSnuggles: need to pass reference to canvas
         this.e6809.init( this );
 
-        $("#status").text("Loaded.");
+        this.status = "Loaded.";
 
         /* message loop handler and emulator code */
         /* reset the vectrex hardware */
@@ -1732,17 +1732,32 @@ function VecX()
         var vecx = this;
         setTimeout( function() { vecx.start(); }, 200 );
     }
-    
-    this.toggleSoundEnabled = function() 
+
+    this.toggleSoundEnabled = function()
     {
         return this.e8910.toggleEnabled();
     }
 
+    this.shadow_snd_regs14 = 0xff;
+
+    // DrSnuggles: used by input.js
+    this.button = function(controller, button, state) {
+      var buttonVal = Math.pow(2, button);
+      buttonVal = buttonVal * Math.pow(2, controller*4);
+      state ? vecx.shadow_snd_regs14 &= ~buttonVal : vecx.shadow_snd_regs14 |= buttonVal;
+    };
+
+    this.axis = function(controller, axis, val) {
+      // controller 0 = player1
+      // axis 0 = left/right
+      vecx["alg_jch"+(controller*2+axis)] = val;
+    };
+
+    /* DrSnuggles: moved to input.js
     this.leftHeld = false;
     this.rightHeld = false;
     this.upHeld = false;
     this.downHeld = false;
-    this.shadow_snd_regs14 = 0xff;
 
     this.onkeydown = function( event )
     {
@@ -1839,7 +1854,7 @@ function VecX()
             event.preventDefault();
         }
     }
-
+    */
 #if 0
     this.validateState = function()
     {
@@ -2119,7 +2134,7 @@ function VecX()
 
         if( negstr != null ) alert( negstr );
     }
-#endif    
+#endif
 }
 
 //Globals.vecx = new VecX();
