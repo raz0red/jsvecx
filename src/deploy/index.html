@@ -17,6 +17,7 @@
     <script src="js/osint.js" type="text/javascript"></script>
     <script src="js/vector_t.js" type="text/javascript"></script>
     <script src="js/vecx.js" type="text/javascript"></script>
+    <script src="js/input.js" type="text/javascript"></script>
 
     <script src="js/roms/castle.js" type="text/javascript"></script>
 
@@ -146,18 +147,18 @@
 
             if (file) {
                 if (file.size <= 100 * 1024) /* 100kb max */ {
-                    var reader = new FileReader();  
+                    var reader = new FileReader();
                     reader.readAsBinaryString(file);
                     $("#status").text("Processing file...");
-                     reader.onloadend = function() {            
-                        $("#status").text("Processing completed.");                                 
-                        Globals.cartdata = reader.result;                                         
+                     reader.onloadend = function() {
+                        $("#status").text("Processing completed.");
+                        Globals.cartdata = reader.result;
                         $("#roms").val("");
                         switchRom([null, null, "none", "none"]);
-                    }                   
+                    }
                 } else {
                     $("#status").text("File too large.");
-                }                
+                }
             }
         }
 
@@ -268,6 +269,7 @@
                 }
             );
 
+            /* input.js
             document.onkeydown =
                 function(event) {
                     vecx.onkeydown(event)
@@ -277,7 +279,7 @@
                 function(event) {
                     vecx.onkeyup(event)
                 };
-
+            */
             /*
             document.onkeypress =
                 function( event )
@@ -350,8 +352,13 @@
                 event.preventDefault();
             });
 
+            // DrSnuggles: added canvas parameter
+            vecx.main( $('#screen')[0] );
 
-            vecx.main();
+            // DrSnuggles: poll status from vecx
+            setInterval(function(){
+              $("#status").text( vecx.status );
+            }, 2000);
         });
     </script>
 </head>

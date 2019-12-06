@@ -266,14 +266,14 @@ function osint()
         }
         this.ctx.putImageData(this.imageData, 0, 0);
     }
-    this.init = function( vecx )
+    this.init = function( vecx, canv )
     {
         this.vecx = vecx;
         this.screen_x = Globals.SCREEN_X_DEFAULT;
         this.screen_y = Globals.SCREEN_Y_DEFAULT;
         this.lPitch = this.bytes_per_pixel * this.screen_x;
         this.osint_defaults();
-        this.canvas = document.getElementById('screen');
+        this.canvas = canv;
         this.ctx = this.canvas.getContext('2d');
         this.imageData = this.ctx.getImageData(0, 0, this.screen_x, this.screen_y);
         this.data = this.imageData.data;

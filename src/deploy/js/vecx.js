@@ -856,13 +856,13 @@ function VecX()
         this.fpsTimer = setInterval(
             function()
             {
-                $("#status").text( "FPS: " +
+                vecx.status = "FPS: " +
                     ( vecx.count / ( new Date().getTime() - vecx.startTime )
                         * 1000.0 ).toFixed(2) + " (50)" +
                     ( vecx.extraTime > 0 ?
                        ( ", extra: " +
                             ( vecx.extraTime / ( vecx.count / 50 ) ).toFixed(2)
-                                + " (ms)" ) : "" ) );
+                                + " (ms)" ) : "" );
                 if( vecx.count > 500 )
                 {
                     vecx.startTime = new Date().getTime();
@@ -874,14 +874,6 @@ function VecX()
         var f = function()
         {
             if( !vecx.running ) return;
-            vecx.alg_jch0 =
-                 ( vecx.leftHeld ? 0x00 :
-                     ( vecx.rightHeld ? 0xff :
-                        0x80 ) );
-            vecx.alg_jch1 =
-                 ( vecx.downHeld ? 0x00 :
-                    ( vecx.upHeld ? 0xff :
-                        0x80 ) );
             vecx.snd_regs[14] = vecx.shadow_snd_regs14;
             vecx.vecx_emu.call( vecx, cycles, 0 );
             vecx.count++;
@@ -915,11 +907,11 @@ function VecX()
             this.vecx_emuloop();
         }
     }
-    this.main = function()
+    this.main = function( canv )
     {
-        this.osint.init( this );
+        this.osint.init( this, canv );
         this.e6809.init( this );
-        $("#status").text("Loaded.");
+        this.status = "Loaded.";
         this.vecx_reset();
         this.start();
     }
@@ -935,93 +927,17 @@ function VecX()
     {
         return this.e8910.toggleEnabled();
     }
-    this.leftHeld = false;
-    this.rightHeld = false;
-    this.upHeld = false;
-    this.downHeld = false;
+
     this.shadow_snd_regs14 = 0xff;
-    this.onkeydown = function( event )
-    {
-        var handled = true;
-        switch( event.keyCode )
-        {
-            case 37:
-            case 76:
-                this.leftHeld = true;
-                break;
-            case 38:
-            case 80:
-                this.upHeld = true;
-                break;
-            case 39:
-            case 222:
-                this.rightHeld = true;
-                break;
-            case 40:
-            case 59:
-            case 186:
-                this.downHeld = true;
-                break;
-            case 65:
-                this.shadow_snd_regs14 &= (~0x01);
-                break;
-            case 83:
-                this.shadow_snd_regs14 &= (~0x02);
-                break;
-            case 68:
-                this.shadow_snd_regs14 &= (~0x04);
-                break;
-            case 70:
-                this.shadow_snd_regs14 &= (~0x08);
-                break;
-            default:
-                handled = false;
-        }
-        if( handled && event.preventDefault )
-        {
-            event.preventDefault();
-        }
-    }
-    this.onkeyup = function( event )
-    {
-        var handled = true;
-        switch( event.keyCode )
-        {
-            case 37:
-            case 76:
-                this.leftHeld = false;
-                break;
-            case 38:
-            case 80:
-                this.upHeld = false;
-                break;
-            case 39:
-            case 222:
-                this.rightHeld = false;
-                break;
-            case 40:
-            case 59:
-            case 186:
-                this.downHeld = false;
-                break;
-            case 65:
-                this.shadow_snd_regs14 |= 0x01;
-                break;
-            case 83:
-                this.shadow_snd_regs14 |= 0x02;
-                break;
-            case 68:
-                this.shadow_snd_regs14 |= 0x04;
-                break;
-            case 70:
-                this.shadow_snd_regs14 |= 0x08;
-                break;
-            default:
-                handled = false;
-        }
-        if( handled && event.preventDefault )
-        {
-            event.preventDefault();
-        }
-    }
+
+    this.button = function(controller, button, state) {
+      var buttonVal = Math.pow(2, button);
+      buttonVal = buttonVal * Math.pow(2, controller*4);
+      state ? vecx.shadow_snd_regs14 &= ~buttonVal : vecx.shadow_snd_regs14 |= buttonVal;
+    };
+
+    this.axis = function(controller, axis, val) {
+      vecx["alg_jch"+(controller*2+axis)] = val;
+    };
+
 }
